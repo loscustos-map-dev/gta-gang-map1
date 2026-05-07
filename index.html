@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Los Santos Gang Map</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #111;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* SAĞ ÜST PANEL */
+
+.legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(20,20,20,0.92);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    width: 340px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.legend h2 {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+}
+
+.color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<!-- SAĞ ÜST ÇETE LİSTESİ -->
+
+<div class="legend">
+
+    <h2>Çete Bölgeleri</h2>
+
+    <div class="legend-item">
+        <div class="color-box" style="background:red;"></div>
+        MADVIKINGS MC
+    </div>
+
+    <div class="legend-item">
+        <div class="color-box" style="background:green;"></div>
+        Chamberlain
+    </div>
+
+    <div class="legend-item">
+        <div class="color-box" style="background:purple;"></div>
+        CursedCross MC
+    </div>
+
+    <div class="legend-item">
+        <div class="color-box" style="background:orange;"></div>
+        Thomas Hunter'ın mekanı olabilir
+    </div>
+
+    <div class="legend-item">
+        <div class="color-box" style="background:blue;"></div>
+        Bilinmeyen Topluluk
+    </div>
+
+</div>
+
+<script>
+
+// HARİTA
+
+const map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: -2,
+    maxZoom: 2,
+    zoomSnap: 0.25
+});
+
+// HARİTA BOYUTU
+
+const bounds = [
+    [-8192, -8192],
+    [8192, 8192]
+];
+
+// HARİTA RESMİ
+
+L.imageOverlay('map.jpg', bounds).addTo(map);
+
+map.fitBounds(bounds);
+
+</script>
+
+</body>
+</html>
